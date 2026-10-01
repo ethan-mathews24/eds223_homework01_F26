@@ -19,6 +19,7 @@ execute:
 library(tidyverse)
 library(sf)
 library(here)
+library(tmap)
 
 # Read in geodatabase of EJScreen data at the Census Block Group level
 
@@ -39,5 +40,24 @@ douglas <- nebraska |>
 # Find the average values for all variables within counties
 
 douglas_counties <- aggregate(nebraska, by = list(nebraska$CNTY_NAME), FUN = mean)
+
+```
+
+
+
+```{r}
+
+tm_shape(douglas_counties) + 
+    tm_polygons(fill = "CANCER",
+    fill.scale = tm_scale(values = "-viridis")) +
+    tm_dots(fill = "LOWINCPCT", 
+    fill.scale = tm_scale(values = c("lightblue", "darkblue"))) 
+    
+
+
+
+
+
+
 
 ```

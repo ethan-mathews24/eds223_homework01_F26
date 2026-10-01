@@ -10,7 +10,7 @@
 
 ### Purpose of this Repository
 
-This repository is for the Homework #01 assignment for EDS223 (MEDS-Fall2026).
+This repository contains Homework 1 for EDS 223: Geospatial Analysis & Remote Sensing. It uses the EPA's National EJScreen data at the Census block group level to map environmental justice concerns. The data was filtered to Douglas County, Nebraska, in order to run the analysis and reduce computational load. The goal is to build accessible, multi-layer maps in R with `tmap` that show how environmental burdens are distributed across communities in the county.
 
 
 
@@ -21,6 +21,8 @@ This repository is for the Homework #01 assignment for EDS223 (MEDS-Fall2026).
 * `fs`
 
 * `here`
+
+* `tmap`
 
 
 ## File Structure 
