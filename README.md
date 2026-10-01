@@ -1,7 +1,7 @@
 # Geospatial Analysis of Various Environmental Inequities in Douglas County, Nebraska
 
 
-![](images/DOUGLAS.png)
+![](images/NEBRASKA.png)
 
 <p align="center">
 <a href="https://science.nasa.gov/mission/landsat/">Your Name in Landsat</a>
