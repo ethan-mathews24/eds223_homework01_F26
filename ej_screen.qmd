@@ -1,0 +1,43 @@
+---
+title: "Homework #1 for Geospatial Analysis & Remote Sensing (EDS223 - Fall 2026)"
+format: html
+date: 10-10-2026
+format:
+  pdf:
+    toc: false
+execute:
+  echo: true
+  warning: false
+  message: false
+
+---
+
+
+```{r}
+
+# Load in Packages 
+library(tidyverse)
+library(sf)
+library(here)
+
+# Read in geodatabase of EJScreen data at the Census Block Group level
+
+ej <- sf::st_read(here::here("data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb"))
+
+# Filter to a state
+
+nebraska <- ej |> 
+  dplyr::filter(ST_ABBREV == "NE")
+
+
+# Filter to a county 
+
+douglas <- nebraska |> 
+    dplyr::filter(CNTY_NAME == "Douglas County")
+
+
+# Find the average values for all variables within counties
+
+douglas_counties <- aggregate(nebraska, by = list(nebraska$CNTY_NAME), FUN = mean)
+
+```
