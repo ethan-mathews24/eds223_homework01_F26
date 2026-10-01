@@ -4,7 +4,7 @@
 ![](images/DOUGLAS.png)
 
 <p align="center">
-[Your Name in Landast](https://science.nasa.gov/mission/landsat/)
+<a href="https://science.nasa.gov/mission/landsat/">Your Name in Landsat</a>
 </p>
 
 
