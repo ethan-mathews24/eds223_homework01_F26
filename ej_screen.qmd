@@ -1,6 +1,5 @@
 ---
 title: "Homework #1 for Geospatial Analysis & Remote Sensing (EDS223 - Fall 2026)"
-format: html
 date: 10-10-2026
 format:
   pdf:
@@ -9,11 +8,16 @@ execute:
   echo: true
   warning: false
   message: false
+  results: hide
 
 ---
 
 
 ```{r}
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
 
 # Load in Packages 
 library(tidyverse)
@@ -22,70 +26,100 @@ library(here)
 library(tmap)
 
 # Read in geodatabase of EJScreen data at the Census Block Group level
+ej <- sf::st_read(here::here(
+  "data", "ejscreen", "EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb"))
 
-ej <- sf::st_read(here::here("data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb"))
-
-# Filter to a state
-
-nebraska <- ej |> 
-  dplyr::filter(ST_ABBREV == "NE")
+# Filter dataset to a state
+louisiana <- ej |> 
+  dplyr::filter(ST_ABBREV == "LA")
 
 
-# Filter to a county 
-
-douglas <- nebraska |> 
-    dplyr::filter(CNTY_NAME == "Douglas County")
+# Filter dataset to a county 
+east_baton <- louisiana |> 
+    dplyr::filter(CNTY_NAME == "East Baton Rouge Parish")
 
 
 # Find the average values for all variables within counties
-
-ne_counties <- aggregate(nebraska, by = list(nebraska$CNTY_NAME), FUN = mean)
-
+ks_counties <- aggregate(louisiana, by = list(louisiana$CNTY_NAME), 
+FUN = mean)
 ```
 
 
 ```{r}
-
 # Cleaning data so we do not have NA columns in the interactive map
-
-clean_ne <- ne_counties |> 
+clean_ks <- ks_counties |> 
     select(-c("ID", "STATE_NAME", "ST_ABBREV", "CNTY_NAME"))
-
-
 ```
 
 
 ```{r}
-
 # make the map output interactive
 tmap_mode("plot")
-
 ```
 
 ```{r}
+#| fig-width: 8
+#| fig-height: 7
 
-tm_shape(clean_ne) + 
+# Map for low income community percentage and houses build before 1960
+
+tm_shape(clean_ks) + 
     tm_polygons(fill = "LOWINCPCT",
-    fill.legend = tm_legend(title = "Percentage of Low Income Community"),
-    fill.scale = tm_scale(values = "-viridis")) +
-    tm_bubbles(fill = "PRE1960PCT", 
-    size = 1.0,
-    fill.legend = tm_legend(title = "Percentage of Houses Built Before 1960"),
-    fill.scale = tm_scale(values = c("lightblue", "darkblue")))
+    fill.scale = tm_scale(values = "-viridis"),
+    fill.legend = tm_legend(title = "Low Income Community (proportion)",
+    position = tm_pos_out("right", "center"))) +
+
+    tm_symbols(fill = "PRE1960PCT", 
+     size = 0.3,
+     shape = 21,
+     col = "black",
+     lwd = 0.5,
+     fill.scale = tm_scale(values = c("lightpink", "darkmagenta")),
+     fill.legend = tm_legend(title = "Houses Built Before 1960\n(proportion)",
+     position = tm_pos_out("right", "center"))) +
+
+    tm_compass(size = 2, text.size = 0.7, position = c("right", "top")) +
+
+    tm_scalebar(width = 10, text.size = 0.5, position = c("right", "top")) +
+
+    tm_title("Low Income Communities in Houses\nBuilt Before 1960 in Louisiana",
+    size = 1.0, 
+    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom"))
 
 
 ```
 
 
 ```{r}
+#| fig-width: 8
+#| fig-height: 7
 
-tm_shape(clean_ne) +
-    tm_polygons(fill = "LOWINCPCT",
-    fill.scale = tm_scale(values = "Blues"),
-    fill.legend = tm_legend(title = "Percentage of Low Income Community")) + 
-    tm_bubbles(fill = "PM25", size = 1.0,
-    fill.legend = tm_legend(title = "Particulate Matter (PM2.5)"),
-    fill.scale = tm_scale(values = c("yellow", "red")))
+
+# Map for low income community percentage and particulate matter
+
+tm_shape(east_baton) +
+    tm_polygons(fill = "PEOPCOLORPCT",
+      fill.scale = tm_scale(values = "brewer.blues"),
+      fill.legend = tm_legend(title = "People of Color (proportion)",
+      position = tm_pos_out("right", "center"))) + 
+    
+    tm_symbols(fill = "PM25",
+      size = 0.3, 
+      shape = 21, 
+      col = "black", 
+      lwd = 0.5,
+      fill.scale = tm_scale(values = c("orange", "darkred")),
+      fill.legend = tm_legend(title = "PM2.5 (µg/m³)",
+      position = tm_pos_out("right", "center"))) +
+
+    tm_compass(size = 2, text.size = 0.7, position = c("left", "bottom")) +
+
+    tm_scalebar(width = 10, text.size = 0.5, position = c("left", "bottom")) +
+      
+    tm_title(
+    "People of Color Exposed to Particulate Matter\nin East Baton Rouge Parish, LA",
+    size = 1.0, 
+    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom"))
 
 
 ```

@@ -1,7 +1,7 @@
-# Geospatial Analysis of Various Environmental Inequities in Douglas County, Nebraska
+# Geospatial Analysis of Various Environmental Inequities in East Baton Rouge Parish, Louisiana
 
 
-![](images/NEBRASKA.png)
+![](images/LA.png)
 
 <p align="center">
 <a href="https://science.nasa.gov/mission/landsat/">Your Name in Landsat</a>
@@ -10,7 +10,7 @@
 
 ### Purpose of this Repository
 
-This repository contains Homework 1 for EDS 223: Geospatial Analysis & Remote Sensing. It uses the EPA's National EJScreen data at the Census block group level to map environmental justice concerns. In order to run the analysis and reduce computational load, the data was filtered to Douglas County, Nebraska. The goal is to build accessible, multi-layer maps in R with `tmap` that show how environmental burdens are distributed across communities in the county.
+This repository contains Homework 1 for EDS 223: Geospatial Analysis & Remote Sensing. It uses the EPA's National EJScreen data at the Census block group level to map environmental justice concerns. In order to run the analysis and reduce computational load, the data was filtered to East Baton Rouge Parish, Louisiana. The goal is to build accessible, multi-layer maps in R with `tmap` that show how environmental burdens are distributed across communities in the county.
 
 
 
