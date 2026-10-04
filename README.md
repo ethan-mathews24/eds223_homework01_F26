@@ -42,10 +42,10 @@ EDS223-HW1
 
 ### Repository Contents
 
-The [`data`](data/) folder contains the data used for this analysis. 
+The `data` folder contains the data used for this analysis. 
 
 
-The [`images`](images/) folder contains images that were used for the README and results section.
+The `images` folder contains images that were used for the README and results section.
 
 
 ## Results 
@@ -69,6 +69,10 @@ The tool, when in existence, was intended to support research and policy goals. 
 
 While the original tool is no longer available, an unofficial version can be found [here](https://pedp-ejscreen.azurewebsites.net/).
 
+
+### Data Citation 
+
+Public Environmental Data Partners. *EJScreen: Environmental Justice Screening and Mapping Tool*. Originally developed by U.S. Environmental Protection Agency, 2025, pedp-ejscreen.azurewebsites.net/. Accessed 02 October 2026.
 
 
 ### Authors and Contributors
