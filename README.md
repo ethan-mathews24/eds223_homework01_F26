@@ -27,11 +27,15 @@ This repository contains Homework 1 for EDS 223: Geospatial Analysis & Remote Se
 
 ## File Structure 
 
-`run tree`
-
-paste below
 ```
-
+EDS223-HW1
+├── data
+│   └── ejscreen
+├── ej_screen.pdf
+├── ej_screen.qmd
+├── images
+│   └── LA.png
+└── README.md
 
 ```
 
@@ -41,7 +45,7 @@ paste below
 The [`data`](data/) folder contains the data used for this analysis. 
 
 
-The [`images`](images/) folder contains imagaes that were used for the README and results section.
+The [`images`](images/) folder contains images that were used for the README and results section.
 
 
 ## Results 
@@ -59,9 +63,9 @@ INFO:
 
 ### Data Information/Access
 
-The data used for this analysis was from the United States Environmental Protection Agency’s previous [EJScreen: Environmental Justice Screening and Mapping Tool](https://www.epa.gov/ejscreen).
+The data used for this analysis was from the United States Environmental Protection Agency’s previous EJScreen: Environmental Justice Screening and Mapping Tool found [here](https://www.epa.gov/ejscreen).
 
-The tool, when in existence, was intended to support research and policy goals. It was shared with the public to be more transparent about how we consider environmental justice in our work, to assist  stakeholders in making informed decisions about pursuing environmental justice, and to create a common starting point between the agency and the public when looking at issues related to environmental justice.
+The tool, when in existence, was intended to support research and policy goals. It was shared with the public to be more transparent about how we consider environmental justice in our work and to assist  stakeholders in making informed decisions about pursuing environmental justice.
 
 While the original tool is no longer available, an unofficial version can be found [here](https://pedp-ejscreen.azurewebsites.net/).
 
@@ -73,9 +77,6 @@ Author: [Ethan Mathews](https://github.com/ethan-mathews24)
 
 Contributor: [Annie Adams](https://github.com/annieradams)
 
-
-
-### Acknowledgements
 
 
 

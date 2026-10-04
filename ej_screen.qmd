@@ -4,6 +4,7 @@ date: 10-10-2026
 format:
   pdf:
     toc: false
+    code-fold: false
 execute:
   echo: true
   warning: false
@@ -53,7 +54,7 @@ clean_ks <- ks_counties |>
 
 
 ```{r}
-# make the map output interactive
+# Make the map output static
 tmap_mode("plot")
 ```
 
@@ -75,16 +76,18 @@ tm_shape(clean_ks) +
      col = "black",
      lwd = 0.5,
      fill.scale = tm_scale(values = c("lightpink", "darkmagenta")),
-     fill.legend = tm_legend(title = "Houses Built Before 1960\n(proportion)",
-     position = tm_pos_out("right", "center"))) +
+     fill.legend = tm_legend(
+      title = "Houses Built Before 1960\n(proportion)", 
+      position = tm_pos_out("right", "center"))) +
 
     tm_compass(size = 2, text.size = 0.7, position = c("right", "top")) +
 
     tm_scalebar(width = 10, text.size = 0.5, position = c("right", "top")) +
 
-    tm_title("Low Income Communities in Houses\nBuilt Before 1960 in Louisiana",
-    size = 1.0, 
-    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom"))
+    tm_title(
+      "Low Income Communities in Houses\nBuilt Before 1960 in Louisiana", 
+      size = 1.0, 
+      position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom"))
 
 
 ```
