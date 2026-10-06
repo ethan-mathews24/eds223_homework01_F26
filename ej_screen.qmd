@@ -10,7 +10,6 @@ execute:
   warning: false
   message: false
   results: hide
-
 ---
 
 
@@ -47,82 +46,78 @@ FUN = mean)
 
 
 ```{r}
-# Cleaning data so we do not have NA columns in the interactive map
-clean_ks <- ks_counties |> 
-    select(-c("ID", "STATE_NAME", "ST_ABBREV", "CNTY_NAME"))
-```
-
-
-```{r}
 # Make the map output static
 tmap_mode("plot")
 ```
 
-```{r}
-#| fig-width: 8
-#| fig-height: 7
-
-# Map for low income community percentage and houses build before 1960
-
-tm_shape(clean_ks) + 
-    tm_polygons(fill = "LOWINCPCT",
-    fill.scale = tm_scale(values = "-viridis"),
-    fill.legend = tm_legend(title = "Low Income Community (proportion)",
-    position = tm_pos_out("right", "center"))) +
-
-    tm_symbols(fill = "PRE1960PCT", 
-     size = 0.3,
-     shape = 21,
-     col = "black",
-     lwd = 0.5,
-     fill.scale = tm_scale(values = c("lightpink", "darkmagenta")),
-     fill.legend = tm_legend(
-      title = "Houses Built Before 1960\n(proportion)", 
-      position = tm_pos_out("right", "center"))) +
-
-    tm_compass(size = 2, text.size = 0.7, position = c("right", "top")) +
-
-    tm_scalebar(width = 10, text.size = 0.5, position = c("right", "top")) +
-
-    tm_title(
-      "Low Income Communities in Houses\nBuilt Before 1960 in Louisiana", 
-      size = 1.0, 
-      position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom"))
-
-
-```
 
 
 ```{r}
 #| fig-width: 8
 #| fig-height: 7
 
+# Map of people of color
 
-# Map for low income community percentage and particulate matter
+tm_shape(east_baton) + # Specifying dataframe
 
-tm_shape(east_baton) +
-    tm_polygons(fill = "PEOPCOLORPCT",
-      fill.scale = tm_scale(values = "brewer.blues"),
-      fill.legend = tm_legend(title = "People of Color (proportion)",
-      position = tm_pos_out("right", "center"))) + 
-    
-    tm_symbols(fill = "PM25",
-      size = 0.3, 
-      shape = 21, 
-      col = "black", 
-      lwd = 0.5,
-      fill.scale = tm_scale(values = c("orange", "darkred")),
-      fill.legend = tm_legend(title = "PM2.5 (µg/m³)",
-      position = tm_pos_out("right", "center"))) +
+    tm_polygons(fill = "PEOPCOLORPCT", # People of color variable
+      lwd = 0.1, # Reducing line width of block border
+      col = "white", # Adding specific color to block border
+      fill.scale = tm_scale(values = "brewer.blues"), # Setting color gradient
+      fill.legend = tm_legend(title = "People of Color (proportion)", # Adding title to legend
+      position = tm_pos_out("right", "center"))) + # Setting legend outside of map
 
-    tm_compass(size = 2, text.size = 0.7, position = c("left", "bottom")) +
+    tm_compass(
+      size = 2, text.size = 0.7, position = c("left", "bottom")) + # Adding compass
 
-    tm_scalebar(width = 10, text.size = 0.5, position = c("left", "bottom")) +
-      
+    tm_scalebar(
+      width = 10, text.size = 0.5, position = c("left", "bottom")) + # Adding scalebar
+
     tm_title(
-    "People of Color Exposed to Particulate Matter\nin East Baton Rouge Parish, LA",
-    size = 1.0, 
-    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom"))
+    "People of Color\nin East Baton Rouge Parish, LA", # Adding title to map
+    size = 1.0, # Customizing size of title text
+    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom")) # Setting map title
+
+```
+
+
+
+```{r}
+#| fig-width: 8
+#| fig-height: 7
+
+# Map of the Proximity to RMP (chemical) facilities
+
+tm_shape(east_baton) + # Specifying dataframe
+
+    tm_polygons(fill = "PRMP", # RMP facility proximity variable
+      lwd = 0.1, # Reducing line width of block border
+      col = "black", # Adding specific color to block border
+      fill.scale = tm_scale_intervals(
+      style = "quantile",  # Adding quantile breaks
+      values = c("yellow", "darkred")), # Setting color gradient
+      fill.legend = tm_legend(title = "RMP Facility Proximity\n(facilities/km)", # Adding title to legend
+      position = tm_pos_out("right", "center"))) + # Setting legend outside of map
+
+    tm_compass(
+      size = 2, text.size = 0.7, position = c("left", "bottom")) + # Adding compass
+
+    tm_scalebar(
+      width = 10, text.size = 0.5, position = c("left", "bottom")) + # Adding scalebar
+
+    tm_title(
+    "Proximity to Chemical Facilities\nin East Baton Rouge Parish, LA", # Adding title to map
+    size = 1.0, # Customizing size of title text
+    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom")) # Setting map title
 
 
 ```
+
+## Results
+
+Based on these two maps, we can see there is a pattern between where people of color live and proximity to RMP facilities in East Baton Rouge Parish, Louisiana. According to the EPA, an RMP facility is any stationary industrial source that stores, handles, or processes extremely hazardous toxic substances (EPA, 2026). According to the maps, the block groups with the highest RMP proximity scores are concentrated in the northern part of East Baton Rouge Parish along the Mississippi River. Most of these communities are 80–100% people of color. When we look at the northeastern part of the parish, we can see that the proportion of people of color living there is less than 10%, and these areas are also the farthest from RMP facilities. It is important to note that the RMP variable used in this analysis only measures proximity to the facilities, not actual exposure, and these maps show a correlation rather than a cause. If we were to take this a step further, we could examine the different health problems that these communities deal with. In conclusion, these maps offer a good understanding of how the distribution of people of color in East Baton Rouge Parish varies spatially in relation to proximity to RMP chemical facilities, and they highlight where efforts to mitigate these social inequities could be focused.
+
+
+### Citation 
+
+Environmental Protection Agency. (2026, August 3). *Risk Management Program (RMP) Rule*. EPA. https://www.epa.gov/rmp 
