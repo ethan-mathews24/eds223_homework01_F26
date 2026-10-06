@@ -51,7 +51,6 @@ tmap_mode("plot")
 ```
 
 
-
 ```{r}
 #| fig-width: 8
 #| fig-height: 7
@@ -73,7 +72,7 @@ tm_shape(east_baton) + # Specifying dataframe
     tm_scalebar(
       width = 10, text.size = 0.5, position = c("left", "bottom")) + # Adding scalebar
 
-    tm_title(
+    tm_title( 
     "People of Color\nin East Baton Rouge Parish, LA", # Adding title to map
     size = 1.0, # Customizing size of title text
     position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom")) # Setting map title
@@ -112,6 +111,8 @@ tm_shape(east_baton) + # Specifying dataframe
 
 
 ```
+
+
 
 ## Results
 

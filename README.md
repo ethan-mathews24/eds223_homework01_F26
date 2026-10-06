@@ -10,7 +10,7 @@
 
 ### Purpose of this Repository
 
-This repository contains Homework 1 for EDS 223: Geospatial Analysis & Remote Sensing. It uses the EPA's National EJScreen data at the Census block group level to map environmental justice concerns. In order to run the analysis and reduce computational load, the data was filtered to East Baton Rouge Parish, Louisiana. The goal is to build accessible, multi-layer maps in R with `tmap` that show how environmental burdens are distributed across communities in the county.
+This repository contains Homework 1 for EDS 223: Geospatial Analysis & Remote Sensing. It uses the EPA's National EJScreen data at the Census block group level to map environmental justice concerns. In order to run the analysis and reduce computational load, the data was filtered to East Baton Rouge Parish, Louisiana. The goal is to build accessible, single-layered maps in R with `tmap` that show how environmental burdens are distributed across communities in the county.
 
 
 
@@ -50,15 +50,9 @@ The `images` folder contains images that were used for the README and results se
 
 ## Results 
 
+![](images/image1.png)
 
-![](images/resul1.png)
-INFO:
-
-
-
-![](images/result2.png)
-INFO:
-
+![](images/image2.png)
 
 
 ### Data Information/Access
