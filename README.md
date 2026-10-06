@@ -34,6 +34,8 @@ EDS223-HW1
 ├── ej_screen.pdf
 ├── ej_screen.qmd
 ├── images
+│   ├── image1.png
+│   ├── image2.png
 │   └── LA.png
 └── README.md
 
