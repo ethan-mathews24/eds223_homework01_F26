@@ -1,4 +1,4 @@
-# Geospatial Analysis of Various Environmental Inequities in East Baton Rouge Parish, Louisiana
+# Geospatial Analysis of Environmental Inequities in East Baton Rouge Parish, Louisiana
 
 
 ![](images/LA.png)
@@ -25,7 +25,7 @@ This repository contains Homework 1 for EDS 223: Geospatial Analysis & Remote Se
 * `tmap`
 
 
-## File Structure 
+### File Structure 
 
 ```
 EDS223-HW1
@@ -50,11 +50,12 @@ The `data` folder contains the data used for this analysis.
 The `images` folder contains images that were used for the README and results section.
 
 
-## Results 
+### Results 
 
-![](images/image1.png)
-
-![](images/image2.png)
+<p>
+  <img src="images/image1.png" width="49%">
+  <img src="images/image2.png" width="49%">
+</p>
 
 
 ### Data Information/Access

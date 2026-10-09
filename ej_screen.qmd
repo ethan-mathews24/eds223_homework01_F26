@@ -1,6 +1,6 @@
 ---
 title: "Homework #1 for Geospatial Analysis & Remote Sensing (EDS223 - Fall 2026)"
-date: 10-10-2026
+date: 10-08-2026
 format:
   pdf:
     toc: false
@@ -55,27 +55,33 @@ tmap_mode("plot")
 #| fig-width: 8
 #| fig-height: 7
 
-# Map of people of color
+#  Map of the proportion of people of color in East Baton Rouge Parish
 
-tm_shape(east_baton) + # Specifying dataframe
+# Specifying dataframe from filtered data
+tm_shape(east_baton) + 
 
-    tm_polygons(fill = "PEOPCOLORPCT", # People of color variable
-      lwd = 0.1, # Reducing line width of block border
-      col = "white", # Adding specific color to block border
-      fill.scale = tm_scale(values = "brewer.blues"), # Setting color gradient
-      fill.legend = tm_legend(title = "People of Color (proportion)", # Adding title to legend
-      position = tm_pos_out("right", "center"))) + # Setting legend outside of map
+# Fill polygon shape by people of color variable while 
+# customizing specific attributes to enhance aesthetic
+    tm_polygons(fill = "PEOPCOLORPCT", 
+      lwd = 0.1, 
+      col = "white", 
+      fill.scale = tm_scale(values = "brewer.blues"), 
+      fill.legend = tm_legend(title = "People of Color (proportion)",  
+      position = tm_pos_out("right", "center"))) +
 
+# Add a north arrow in the bottom left corner
     tm_compass(
-      size = 2, text.size = 0.7, position = c("left", "bottom")) + # Adding compass
+      size = 2, text.size = 0.7, position = c("left", "bottom")) + 
 
+# Adding a scalebar in the bottom left corner
     tm_scalebar(
-      width = 10, text.size = 0.5, position = c("left", "bottom")) + # Adding scalebar
+      width = 8, text.size = 0.5, position = c("left", "bottom")) + 
 
+# Add a title above the map, positioned to the left
     tm_title( 
-    "People of Color\nin East Baton Rouge Parish, LA", # Adding title to map
-    size = 1.0, # Customizing size of title text
-    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom")) # Setting map title
+    "People of Color\nin East Baton Rouge Parish, LA", #
+    size = 1.0, 
+    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom")) 
 
 ```
 
@@ -85,40 +91,45 @@ tm_shape(east_baton) + # Specifying dataframe
 #| fig-width: 8
 #| fig-height: 7
 
-# Map of the Proximity to RMP (chemical) facilities
+# Map of the Proximity to RMP (chemical) facilities in East Baton Rouge Parish
 
-tm_shape(east_baton) + # Specifying dataframe
+# Specifying dataframe from filtered data
+tm_shape(east_baton) +
 
-    tm_polygons(fill = "PRMP", # RMP facility proximity variable
-      lwd = 0.1, # Reducing line width of block border
-      col = "black", # Adding specific color to block border
+# Fill polygon shape with proximity to RMP facility variable while
+# customizing specific attributes to enhance aesthetic
+    tm_polygons(fill = "PRMP", 
+      lwd = 0.1, 
+      col = "black", 
       fill.scale = tm_scale_intervals(
-      style = "quantile",  # Adding quantile breaks
-      values = c("yellow", "darkred")), # Setting color gradient
-      fill.legend = tm_legend(title = "RMP Facility Proximity\n(facilities/km)", # Adding title to legend
-      position = tm_pos_out("right", "center"))) + # Setting legend outside of map
+      style = "quantile",  
+      values = c("yellow", "darkred")), 
+      fill.legend = tm_legend(
+        title = "RMP Facility Proximity\n(facilities/km)", 
+        position = tm_pos_out("right", "center"))) + 
 
+# Add a north arrow in the bottom left corner
     tm_compass(
-      size = 2, text.size = 0.7, position = c("left", "bottom")) + # Adding compass
+      size = 2, text.size = 0.7, position = c("left", "bottom")) + 
 
+# Adding a scalebar in the bottom left corner
     tm_scalebar(
-      width = 10, text.size = 0.5, position = c("left", "bottom")) + # Adding scalebar
+      width = 8, text.size = 0.5, position = c("left", "bottom")) + 
 
+# Add a title above the map, positioned to the left
     tm_title(
-    "Proximity to Chemical Facilities\nin East Baton Rouge Parish, LA", # Adding title to map
-    size = 1.0, # Customizing size of title text
-    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom")) # Setting map title
-
+    "Proximity to Chemical Facilities\nin East Baton Rouge Parish, LA", 
+    size = 1.0, 
+    position = tm_pos_out("center", "top", pos.h = "left", pos.v = "bottom")) 
 
 ```
 
 
-
 ## Results
 
-Based on these two maps, we can see there is a pattern between where people of color live and proximity to RMP facilities in East Baton Rouge Parish, Louisiana. According to the EPA, an RMP facility is any stationary industrial source that stores, handles, or processes extremely hazardous toxic substances (EPA, 2026). According to the maps, the block groups with the highest RMP proximity scores are concentrated in the northern part of East Baton Rouge Parish along the Mississippi River. Most of these communities are 80–100% people of color. When we look at the northeastern part of the parish, we can see that the proportion of people of color living there is less than 10%, and these areas are also the farthest from RMP facilities. It is important to note that the RMP variable used in this analysis only measures proximity to the facilities, not actual exposure, and these maps show a correlation rather than a cause. If we were to take this a step further, we could examine the different health problems that these communities deal with. In conclusion, these maps offer a good understanding of how the distribution of people of color in East Baton Rouge Parish varies spatially in relation to proximity to RMP chemical facilities, and they highlight where efforts to mitigate these social inequities could be focused.
+Based on these two maps, we can see there is a pattern between where people of color live and proximity to RMP facilities in East Baton Rouge Parish, Louisiana. According to the EPA, an RMP facility is any stationary industrial source that stores, handles, or processes extremely hazardous toxic substances (EPA, 2026). According to the maps, the block groups with the highest RMP proximity scores are concentrated in the northern part of East Baton Rouge Parish along the Mississippi River. Most of these communities are 80–100% people of color. When we look at the northeastern part of the parish, we can see that the proportion of people of color living there is less than 10%, and these areas are also the farthest from RMP facilities. It is important to note that the RMP variable used in this analysis only measures proximity to the facilities, not actual exposure, and these maps show a correlation rather than a cause. If we were to take this a step further, we could examine the different health problems that these communities live with. In conclusion, these maps offer a good understanding of how the distribution of people of color in East Baton Rouge Parish varies spatially in relation to proximity to RMP chemical facilities, and they highlight where efforts to mitigate these social inequities could be focused.
 
 
 ### Citation 
 
-Environmental Protection Agency. (2026, August 3). *Risk Management Program (RMP) Rule*. EPA. https://www.epa.gov/rmp 
+Environmental Protection Agency. (2026). *Risk Management Program (RMP) Rule*. EPA. [https://www.epa.gov/rmp](https://www.epa.gov/rmp).
