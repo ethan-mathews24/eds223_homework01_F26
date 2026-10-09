@@ -73,11 +73,11 @@ Contributor: [Annie Adams](https://github.com/annieradams)
 ### Citations 
 
 #### Data Citation 
-Public Environmental Data Partners. *EJScreen: Environmental Justice Screening and Mapping Tool*. Originally developed by U.S. Environmental Protection Agency, 2025, pedp-ejscreen.azurewebsites.net/. Accessed 02 October 2026.
+Public Environmental Data Partners. (2025). *EJScreen: Environmental Justice Screening and Mapping Tool*. Originally developed by U.S. Environmental Protection Agency, pedp-ejscreen.azurewebsites.net/. Accessed October 02, 2026.
 
 
 #### Result Citation
-Environmental Protection Agency. (2026, August 3). *Risk Management Program (RMP) Rule*. EPA. https://www.epa.gov/rmp 
+Environmental Protection Agency. (2026). *Risk Management Program (RMP) Rule*. EPA. https://www.epa.gov/rmp 
 
 
 
