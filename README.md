@@ -52,11 +52,7 @@ The `images` folder contains images that were used for the README and results se
 
 ### Results 
 
-<p>
-  <img src="images/image1.png" width="49%">
-  <img src="images/image2.png" width="49%">
-</p>
-
+![](images/image3.png)
 
 ### Data Information/Access
 
